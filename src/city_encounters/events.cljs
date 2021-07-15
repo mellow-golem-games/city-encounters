@@ -31,3 +31,10 @@
     (let [old-match   (:current-route db)
           controllers (rfc/apply-controllers (:controllers old-match) new-match)]
       (assoc db :current-route (assoc new-match :controllers controllers)))))
+
+
+(re-frame/reg-event-db
+  :set-encounter
+  (fn [db [_ encounter]]
+    (conj db {:encounter encounter})))
+

@@ -11,3 +11,8 @@
   :current-route
   (fn [db]
     (:current-route db)))
+
+(re-frame/reg-sub
+  :encounter
+  (fn [db]
+    (:encounter db)))
