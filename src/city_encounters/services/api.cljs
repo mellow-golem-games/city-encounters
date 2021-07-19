@@ -5,7 +5,7 @@
     [cljs.core.async :refer [<!]]
     [city-encounters.config :as config]))
 
-(defn get-random-encouner []
-  (go (let [response (<! (http/get (str config/API_URL "city-encounter?size=Hamlet&outcomes=Good")
+(defn get-random-encouner [sizes outcomes]
+  (go (let [response (<! (http/get (str config/API_URL "city-encounter?size="sizes"&outcomes="outcomes)
                                    {:with-credentials? false}))]
         response)))

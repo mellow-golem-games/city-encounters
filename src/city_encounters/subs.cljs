@@ -13,6 +13,21 @@
     (:current-route db)))
 
 (re-frame/reg-sub
+  :current-size
+  (fn [db]
+    (:current-size db)))
+
+(re-frame/reg-sub
+  :current-outcome
+  (fn [db]
+    (:current-outcome db)))
+
+(re-frame/reg-sub
+  :extra-outcomes
+  (fn [db]
+    (:extra-outcomes db)))
+
+(re-frame/reg-sub
   :encounter
   (fn [db]
     (:encounter db)))

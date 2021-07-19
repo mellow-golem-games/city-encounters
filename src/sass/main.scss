@@ -1,8 +1,10 @@
 @import '_reset';
 
+@import 'components/_button';
+
 html {
   font-size: 16px;
-  background-color: $bg;
+  // background-color: $bg;
 }
 
 body {

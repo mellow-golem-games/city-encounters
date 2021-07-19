@@ -32,6 +32,25 @@
           controllers (rfc/apply-controllers (:controllers old-match) new-match)]
       (assoc db :current-route (assoc new-match :controllers controllers)))))
 
+(re-frame/reg-event-db
+  :set-current-size
+  (fn [db [_ current-size]]
+    (conj db {:current-size current-size})))
+
+(re-frame/reg-event-db
+  :set-current-outcome
+  (fn [db [_ current-outcome]]
+    (conj db {:current-outcome current-outcome})))
+
+(re-frame/reg-event-db
+  :add-extra-outcome
+  (fn [db [_ outcome]]
+    (update db :extra-outcomes conj outcome)))
+
+(re-frame/reg-event-db
+  :remove-extra-outcome
+  (fn [db [_ outcome]]
+    (update db :extra-outcomes (partial remove #(= % outcome)))))
 
 (re-frame/reg-event-db
   :set-encounter
