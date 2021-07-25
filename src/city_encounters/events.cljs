@@ -53,7 +53,11 @@
     (update db :extra-outcomes (partial remove #(= % outcome)))))
 
 (re-frame/reg-event-db
+  :set-is-loading
+  (fn [db [_ val]]
+    (conj db {:is-loading val})))
+
+(re-frame/reg-event-db
   :set-encounter
   (fn [db [_ encounter]]
     (conj db {:encounter encounter})))
-

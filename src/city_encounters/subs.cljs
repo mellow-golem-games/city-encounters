@@ -28,6 +28,11 @@
     (:extra-outcomes db)))
 
 (re-frame/reg-sub
+  :is-loading
+  (fn [db]
+    (:is-loading db)))
+
+(re-frame/reg-sub
   :encounter
   (fn [db]
     (:encounter db)))

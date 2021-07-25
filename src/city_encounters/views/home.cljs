@@ -2,20 +2,26 @@
   (:require [cljs.core.async :refer [take!]]
             [re-frame.core :as re-frame]
             [city-encounters.services.api :as api]
-            [city-encounters.components.Button :refer [Button]]))
+            [city-encounters.components.Button :refer [Button]]
+            [city-encounters.components.Loader :refer [Loader]]))
+
 
 (def SIZES ["Hamlet" "Village" "CITY" "TOWN" "METROPOLIS"])
 (def OUTCOME_TYPE ["Good" "Neutral" "Bad"])
 (def OUTCOMES ["Combat" "Roleplay" "Hook"])
 
+(defn on-success [res]
+  (re-frame/dispatch [:set-is-loading false])
+  (re-frame/dispatch [:set-encounter (:body res)]))
 
 (defn get-encounter [size outcome extra]
+  (re-frame/dispatch [:set-is-loading true])
   (let [outcomes-string (subs (reduce #(str %1 "," %2) "" (concat [outcome] extra)) 1)
         c (api/get-random-encouner size outcomes-string)]
     (take! c
       (fn [res]
         (if (= (:status res) 200)
-          (re-frame/dispatch [:set-encounter (:body res)])
+          (on-success res)
           (js/alert "There was an erorr"))))))
 
 (defn set-current-size [size-string]
@@ -33,7 +39,8 @@
   (let [encounter @(re-frame/subscribe [:encounter])
         current-size @(re-frame/subscribe [:current-size])
         current-outcome @(re-frame/subscribe [:current-outcome])
-        extra-outcomes @(re-frame/subscribe [:extra-outcomes])]
+        extra-outcomes @(re-frame/subscribe [:extra-outcomes])
+        is-loading? @(re-frame/subscribe [:is-loading])]
     [:div.Home.page
      [:h1 "Home"]
      [:p current-size]
@@ -49,8 +56,10 @@
           ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
 
      [:button {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
-     (if encounter
-       [:div
-        [:p (:name encounter)]
-        [:p (:description encounter)]]
-       nil)]))
+     (if is-loading?
+       [Loader]
+       (if encounter
+         [:div
+          [:p (:name encounter)]
+          [:p (:description encounter)]]
+         nil))]))

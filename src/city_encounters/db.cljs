@@ -5,4 +5,5 @@
    :current-route "home"
    :current-size nil
    :current-outcome nil
+   :is-loading false
    :extra-outcomes []})

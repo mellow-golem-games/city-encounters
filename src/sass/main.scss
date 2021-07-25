@@ -1,6 +1,7 @@
 @import '_reset';
 
 @import 'components/_button';
+@import 'components/_loader';
 
 html {
   font-size: 16px;
@@ -11,4 +12,6 @@ body {
   font-size: 1rem;
   color: white;
   overflow: hidden;
+  color: black;
+  background: cyan;
 }
