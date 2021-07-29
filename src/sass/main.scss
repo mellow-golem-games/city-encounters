@@ -1,11 +1,13 @@
-@import '_reset';
+// @import '_reset';
+@import 'tailwind.css';
+@import '_typography';
 
 @import 'components/_button';
 @import 'components/_loader';
 
 html {
   font-size: 16px;
-  // background-color: $bg;
+
 }
 
 body {
@@ -13,5 +15,15 @@ body {
   color: white;
   overflow: hidden;
   color: black;
-  background: cyan;
+  background: #f7ebdd;
+}
+
+button {
+  border: 1px solid $main-color;
+  transition: all .25s;
+
+  &:active, &:hover {
+    background: $main-color;
+    color: white;
+  }
 }

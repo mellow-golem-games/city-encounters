@@ -1,8 +1,10 @@
 .Button {
-  border: 1px solid black;
+  border: 1px solid $main-color;
   color: black;
+  // $main-color:
 
   &.active {
-    background: red;
+    background: $main-color;
+    color: white;
   }
 }
