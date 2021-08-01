@@ -3,7 +3,8 @@
             [re-frame.core :as re-frame]
             [city-encounters.services.api :as api]
             [city-encounters.components.Button :refer [Button]]
-            [city-encounters.components.Loader :refer [Loader]]))
+            [city-encounters.components.Loader :refer [Loader]]
+            [city-encounters.components.Nav :refer [Nav]]))
 
 
 (def SIZES ["Hamlet" "Village" "CITY" "TOWN" "METROPOLIS"])
@@ -72,4 +73,5 @@
          [:div.Home__results
           [:p (:name encounter)]
           [:p (:description encounter)]]
-         nil))]))
+         nil))
+     [Nav]]))

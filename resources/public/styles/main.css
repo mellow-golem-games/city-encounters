@@ -48,6 +48,12 @@ h1, h2, h3, h4, h5 {
   100% {
     transform: rotate(360deg); } }
 
+.Nav {
+  bottom: 0;
+  width: 100%;
+  background: #5c3f23;
+  z-index: 20; }
+
 .Home {
   position: relative;
   height: 100vh; }
