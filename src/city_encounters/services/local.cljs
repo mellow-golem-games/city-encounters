@@ -12,7 +12,7 @@
       (fn [value]
         (let [currentValue (js->clj value :keywordize-keys true)]
           (.then (.setItem localforage STORAGE_KEY (clj->js (conj currentValue id)))
-            (fn [value]
+            (fn [_]
              (js/alert "Saved!"))))))
     (js/alert "No Encounter To Save!")))
 
