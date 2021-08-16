@@ -6,7 +6,8 @@
             [city-encounters.components.Button :refer [Button]]
             [city-encounters.components.Loader :refer [Loader]]
             [city-encounters.components.Nav :refer [Nav]]
-            [city-encounters.views.saved :as Saved]))
+            [city-encounters.views.saved :as Saved]
+            [city-encounters.views.settings :as Settings]))
 
 
 (def SIZES ["Hamlet" "Village" "CITY" "TOWN" "METROPOLIS"])
@@ -51,6 +52,7 @@
         active-page @(re-frame/subscribe [:active-page])]
     [:div.Home.page.text-center.mx-auto.pt-4 {:class (if encounter "Home__encounter" "")}
      [Saved/Saved-page active-page]
+     [Settings/Settings-page active-page]
      [:div.Home__options.px-2
       [:h2.text-4xl.pb-2 "Choose Your Encounter Settings"]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-4.justify-center
