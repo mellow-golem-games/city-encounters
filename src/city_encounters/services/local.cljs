@@ -6,12 +6,12 @@
 (defn get-current-state []
   (.getItem localforage STORAGE_KEY))
 
-(defn handle-save [id]
-  (if id
+(defn handle-save [encounter]
+  (if encounter
     (.then (get-current-state)
       (fn [value]
         (let [currentValue (js->clj value :keywordize-keys true)]
-          (.then (.setItem localforage STORAGE_KEY (clj->js (conj currentValue id)))
+          (.then (.setItem localforage STORAGE_KEY (clj->js (conj currentValue encounter)))
             (fn [_]
              (js/alert "Saved!"))))))
     (js/alert "No Encounter To Save!")))

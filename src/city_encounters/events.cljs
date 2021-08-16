@@ -66,3 +66,8 @@
   :set-active-page
   (fn [db [_ val]]
     (conj db {:active-page val})))
+
+(re-frame/reg-event-db
+  :set-saved-outcomes
+  (fn [db [_ val]]
+    (conj db {:saved-outcomes val})))

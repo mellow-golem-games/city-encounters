@@ -41,3 +41,8 @@
   :active-page
   (fn [db]
     (:active-page db)))
+
+(re-frame/reg-sub
+  :saved-outcomes
+  (fn [db]
+    (:saved-outcomes db)))

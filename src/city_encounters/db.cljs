@@ -7,4 +7,5 @@
    :current-outcome nil
    :is-loading false
    :extra-outcomes []
-   :active-page "home"})
+   :active-page "home"
+   :saved-outcomes nil})

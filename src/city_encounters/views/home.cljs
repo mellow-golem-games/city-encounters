@@ -50,7 +50,6 @@
         is-loading? @(re-frame/subscribe [:is-loading])
         active-page @(re-frame/subscribe [:active-page])]
     [:div.Home.page.text-center.mx-auto.pt-4 {:class (if encounter "Home__encounter" "")}
-     (print active-page)
      [Saved/Saved-page active-page]
      [:div.Home__options.px-2
       [:h2.text-4xl.pb-2 "Choose Your Encounter Settings"]
@@ -77,7 +76,7 @@
        (if encounter
          [:div.Home__results
           [:p (:name encounter)]
-          [:button {:on-click #(localstorage/handle-save (:_id encounter))} "Save"]
+          [:button {:on-click #(localstorage/handle-save encounter)} "Save"]
           [:p (:description encounter)]]
          nil))
      [Nav]]))
