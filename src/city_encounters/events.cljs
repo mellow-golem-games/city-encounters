@@ -61,3 +61,8 @@
   :set-encounter
   (fn [db [_ encounter]]
     (conj db {:encounter encounter})))
+
+(re-frame/reg-event-db
+  :set-active-page
+  (fn [db [_ val]]
+    (conj db {:active-page val})))

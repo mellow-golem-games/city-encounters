@@ -29,3 +29,18 @@ button {
     color: white;
   }
 }
+
+.sub-page {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #f7ebdd;
+  z-index: 10;
+  transition: all 0.25s;
+
+  &.active {
+    top: 0;
+  }
+}

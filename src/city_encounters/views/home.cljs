@@ -5,7 +5,8 @@
             [city-encounters.services.local :as localstorage]
             [city-encounters.components.Button :refer [Button]]
             [city-encounters.components.Loader :refer [Loader]]
-            [city-encounters.components.Nav :refer [Nav]]))
+            [city-encounters.components.Nav :refer [Nav]]
+            [city-encounters.views.saved :as Saved]))
 
 
 (def SIZES ["Hamlet" "Village" "CITY" "TOWN" "METROPOLIS"])
@@ -46,8 +47,11 @@
         current-size @(re-frame/subscribe [:current-size])
         current-outcome @(re-frame/subscribe [:current-outcome])
         extra-outcomes @(re-frame/subscribe [:extra-outcomes])
-        is-loading? @(re-frame/subscribe [:is-loading])]
+        is-loading? @(re-frame/subscribe [:is-loading])
+        active-page @(re-frame/subscribe [:active-page])]
     [:div.Home.page.text-center.mx-auto.pt-4 {:class (if encounter "Home__encounter" "")}
+     (print active-page)
+     [Saved/Saved-page active-page]
      [:div.Home__options.px-2
       [:h2.text-4xl.pb-2 "Choose Your Encounter Settings"]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-4.justify-center

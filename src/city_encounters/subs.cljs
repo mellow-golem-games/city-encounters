@@ -36,3 +36,8 @@
   :encounter
   (fn [db]
     (:encounter db)))
+
+(re-frame/reg-sub
+  :active-page
+  (fn [db]
+    (:active-page db)))

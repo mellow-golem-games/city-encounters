@@ -15,4 +15,3 @@
   [:div#root
    {:style {:width "100vw"}}
    [main-page]])
-

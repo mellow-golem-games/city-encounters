@@ -6,4 +6,5 @@
    :current-size nil
    :current-outcome nil
    :is-loading false
-   :extra-outcomes []})
+   :extra-outcomes []
+   :active-page "home"})
