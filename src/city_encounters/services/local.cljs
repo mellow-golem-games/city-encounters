@@ -16,4 +16,10 @@
              (js/alert "Saved!"))))))
     (js/alert "No Encounter To Save!")))
 
-(defn handle-delete [])
+(defn handle-delete [id]
+  (.then (get-current-state)
+    (fn [value]
+      (let [currentValue (js->clj value :keywordize-keys true)]
+        (.then (.setItem localforage STORAGE_KEY (clj->js (remove #(= (:_id %) id) currentValue)))
+          (fn [_]
+           (js/alert "Deleted!")))))))
