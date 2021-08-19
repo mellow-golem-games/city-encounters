@@ -68,6 +68,11 @@
     (conj db {:active-page val})))
 
 (re-frame/reg-event-db
+  :set-new-outcome
+  (fn [db [_ val]]
+    (update-in db [:saved-outcomes] conj val)))
+
+(re-frame/reg-event-db
   :set-saved-outcomes
   (fn [db [_ val]]
     (conj db {:saved-outcomes val})))

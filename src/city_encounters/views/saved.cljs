@@ -11,16 +11,15 @@
 
 (defn Saved-page [active]
   (let [saved-outcomes @(re-frame/subscribe [:saved-outcomes])]
-    (fn [active]
      (if saved-outcomes
        [:div.Saved.sub-page.mx-auto.pt-4 {:class (if (= active "saved") "active" nil)}
         (if (= (count saved-outcomes) 0)
-          [:h3.text-3xl  "No Saved Encounters"]
+          [:h3.text-3xl "No Saved Encounters"]
           (for [outcome saved-outcomes]
            [:div.max-w-xl.mx-auto.px-6 {:key (:_id outcome)}
             [:div.flex.justify-between
               [:h3.text-3xl (:name outcome)]
-              [:svg {:style {:width "24px" :height "24px" :viewBox "0 0 24 24"} :on-click #(localstorage/handle-delete (:_id outcome))}
-                 [:path {:fill "#62574a" :d "M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"}]]]
+              [:svg {:style {:width "22px" :height "22px"} :viewBox "0 0 576 512" :on-click #(localstorage/handle-delete (:_id outcome))}
+                [:path {:fill "#62574a" :d "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"}]]]
             [:p (:description outcome)]]))]
-       (get-saved-outcomes)))))
+       (get-saved-outcomes))))

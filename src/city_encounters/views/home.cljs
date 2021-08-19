@@ -49,8 +49,10 @@
         current-outcome @(re-frame/subscribe [:current-outcome])
         extra-outcomes @(re-frame/subscribe [:extra-outcomes])
         is-loading? @(re-frame/subscribe [:is-loading])
-        active-page @(re-frame/subscribe [:active-page])]
+        active-page @(re-frame/subscribe [:active-page])
+        saved-outcomes @(re-frame/subscribe [:saved-outcomes])]
     [:div.Home.page.text-center.mx-auto.pt-4 {:class (if encounter "Home__encounter" "")}
+     ; (print saved-outcomes)
      [Saved/Saved-page active-page]
      [Settings/Settings-page active-page]
      [:div.Home__options.px-2
@@ -77,6 +79,6 @@
      (if is-loading?
        [Loader]
        (if encounter
-         [Results encounter]
+         [Results encounter saved-outcomes]
          nil))
      [Nav]]))
