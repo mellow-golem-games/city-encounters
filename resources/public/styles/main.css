@@ -9,11 +9,9 @@ h1, h2, h3, h4, h5 {
   color: #5c3f23; }
 
 .Button {
-  border: 1px solid #5c3f23;
-  color: black; }
-  .Button.active {
-    background: #5c3f23;
-    color: white; }
+  width: 153px;
+  height: 46px;
+  line-height: 46px; }
 
 .lds-ring {
   display: inline-block;
