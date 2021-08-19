@@ -2,7 +2,7 @@
   (:require [cljs.core.async :refer [take!]]
             [re-frame.core :as re-frame]
             [city-encounters.services.api :as api]
-            [city-encounters.services.local :as localstorage]
+            [city-encounters.components.Results :refer [Results]]
             [city-encounters.components.Button :refer [Button]]
             [city-encounters.components.Loader :refer [Loader]]
             [city-encounters.components.Nav :refer [Nav]]
@@ -77,9 +77,6 @@
      (if is-loading?
        [Loader]
        (if encounter
-         [:div.Home__results
-          [:p (:name encounter)]
-          [:button {:on-click #(localstorage/handle-save encounter)} "Save"]
-          [:p (:description encounter)]]
+         [Results encounter]
          nil))
      [Nav]]))

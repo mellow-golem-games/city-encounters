@@ -6,5 +6,4 @@
   [:div.Button.text-white {:class (if active? "active" nil) :on-click #(on-click)
                            :style {:backgroundImage (if-not active? "url('/images/button.png')" "url('/images/button_active.png')")}}
 
-   ; [:img {:src "/images/button.png"}]
    [:p text]])
