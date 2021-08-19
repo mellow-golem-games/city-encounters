@@ -20,16 +20,6 @@ body {
   background: #f7ebdd;
 }
 
-button {
-  border: 1px solid $main-color;
-  transition: all .25s;
-
-  &:active, &:hover {
-    background: $main-color;
-    color: white;
-  }
-}
-
 .sub-page {
   position: absolute;
   top: -100%;

@@ -13,6 +13,14 @@ h1, h2, h3, h4, h5 {
   height: 46px;
   line-height: 46px; }
 
+.Button__generate {
+  width: 153px;
+  height: 46px;
+  line-height: 46px;
+  background-image: url("/images/button.png"); }
+  .Button__generate:active {
+    background-image: url("/images/button_active.png"); }
+
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -49,12 +57,16 @@ h1, h2, h3, h4, h5 {
 .Nav {
   bottom: 0;
   width: 100%;
-  background: #5c3f23;
+  background-image: url("/images/nav_bar.png");
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 20; }
 
 .Home {
   position: relative;
-  height: 100vh; }
+  height: 100vh;
+  background-image: url("/images/paper.jpg");
+  background-size: cover; }
   .Home__options {
     position: absolute;
     top: 0;
@@ -62,7 +74,6 @@ h1, h2, h3, h4, h5 {
     height: 110%;
     width: 100%;
     transition: all 0.5s;
-    background: #f7ebdd;
     z-index: 5; }
     .Home__options__bottom {
       position: absolute;
@@ -87,13 +98,6 @@ body {
   overflow: hidden;
   color: black;
   background: #f7ebdd; }
-
-button {
-  border: 1px solid #5c3f23;
-  transition: all .25s; }
-  button:active, button:hover {
-    background: #5c3f23;
-    color: white; }
 
 .sub-page {
   position: absolute;

@@ -3,3 +3,14 @@
   height: 46px;
   line-height: 46px;
 }
+
+.Button__generate {
+  width: 153px;
+  height: 46px;
+  line-height: 46px;
+  background-image: url('/images/button.png');
+
+  &:active {
+    background-image: url('/images/button_active.png');
+  }
+}

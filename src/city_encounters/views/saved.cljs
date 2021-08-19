@@ -15,7 +15,7 @@
      (if saved-outcomes
        [:div.Saved.sub-page.text-center.mx-auto.pt-4 {:class (if (= active "saved") "active" nil)}
         (for [outcome saved-outcomes]
-         [:div
+         [:div {:key (:_id outcome)}
             [:h3 (:name outcome)]
             [:p (:description outcome)]])]
        (get-saved-outcomes)))))

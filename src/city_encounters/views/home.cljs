@@ -54,7 +54,7 @@
      [Saved/Saved-page active-page]
      [Settings/Settings-page active-page]
      [:div.Home__options.px-2
-      [:h2.text-4xl.pb-2 "Choose Your Encounter Settings"]
+      [:h2.text-4xl.pb-2.pt-2 "Choose Your Encounter Settings"]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-4.justify-center
        [:h3.min-w-full.text-3xl.pb-2 "Location Size"]
        (for [size SIZES]
@@ -68,7 +68,7 @@
        (for [outcome OUTCOMES]
          (let [is-in-list? (some #(= outcome %) extra-outcomes)]
            ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
-      [:button.text-xl.rounded.py-2.px-4.uppercase {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
+      [:button.Button__generate.text-xl.text-white.rounded.uppercase.mt-4 {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
       [:div.Home__options__bottom.text-center.flex.items-center.flex-col.justify-center {:on-click #(re-frame/dispatch [:set-encounter nil])}
        [:h3.text-white.text-xl.flex-grow-0  "New Encounter?"]
        [:svg {:aria-hidden "true" :focusable "false" :role "img" :style {:width "15px"} :xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 320 512"}
