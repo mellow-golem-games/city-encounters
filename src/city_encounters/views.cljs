@@ -6,7 +6,9 @@
 
 (defn main-page
   []
+  (print "Main Page")
   (let [current-route @(re-frame/subscribe [:current-route])]
+    (print current-route)
     [:div
      (when current-route
        [(-> current-route :data :view)])]))

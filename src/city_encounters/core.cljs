@@ -5,6 +5,7 @@
    [city-encounters.events :as events]
    [city-encounters.views :as views]
    [city-encounters.config :as config]
+   [city-encounters.views.home :as Home]
    [city-encounters.routes :as routes]))
 
 
@@ -15,8 +16,7 @@
 
 (defn mount-root []
   (re-frame/clear-subscription-cache!)
-  (routes/init-routes!)
-  (rdom/render [views/root]
+  (rdom/render [Home/Home-page]
                (.getElementById js/document "app")))
 
 (defn ^:export init
