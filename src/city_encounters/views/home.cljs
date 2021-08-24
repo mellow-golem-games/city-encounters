@@ -7,7 +7,8 @@
             [city-encounters.components.Loader :refer [Loader]]
             [city-encounters.components.Nav :refer [Nav]]
             [city-encounters.views.saved :as Saved]
-            [city-encounters.views.settings :as Settings]))
+            [city-encounters.views.settings :as Settings]
+            [city-encounters.components.toast :refer [Toast]]))
 
 
 (def SIZES ["Hamlet" "Village" "CITY" "TOWN" "METROPOLIS"])
@@ -32,7 +33,9 @@
           (if (= (:status res) 200)
             (on-success res)
             (on-error)))))
-    (js/alert "Size and Outcome Required")))
+    (Toast
+      {:text "Size and Outcome Required" :hideAfterN true
+       :styles {:background "#fb6a71;" :border "1px solid #fb6a71;" :z-index "999;" :color "white;"}})))
 
 (defn set-current-size [size-string]
   (re-frame/dispatch [:set-current-size size-string]))
