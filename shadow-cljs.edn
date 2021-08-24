@@ -29,7 +29,8 @@
    :dev
    {:compiler-options
     {:closure-defines
-     {}}}}
+     {}}
+    :release {:compiler-options {:closure-defines {city-encounters.config/API_URL "https://rpg-services.herokuapp.com/"}}}}}
   :browser-test
   {:target    :browser-test
    :ns-regexp "-test$"

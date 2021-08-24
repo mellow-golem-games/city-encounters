@@ -21,12 +21,16 @@
 
 (defn on-error []
   (re-frame/dispatch [:set-is-loading false])
-  (js/alert "There was an error"))
+  (re-frame/dispatch [:set-encounter nil])
+  (Toast
+    {:text "There was an error - Please try again" :hideAfterN true
+     :styles {:background "#fb6a71;" :border "1px solid #fb6a71;" :z-index "999;" :color "white;"}}))
 
 (defn get-encounter [size outcome extra]
   (if (and size outcome)
     (let [outcomes-string (subs (reduce #(str %1 "," %2) "" (concat [outcome] extra)) 1)
           c (api/get-random-encouner size outcomes-string)]
+      (re-frame/dispatch [:set-encounter "LOADING"]) ; we set this so we can trigger the slide up
       (re-frame/dispatch [:set-is-loading true])
       (take! c
         (fn [res]
@@ -61,17 +65,17 @@
      [Saved/Saved-page active-page]
      [Settings/Settings-page active-page]
      [:div.Home__options.px-2
-      [:h2.text-4xl.pb-2.pt-2 "Choose Your Encounter Settings"]
-      [:div.Home__buttonWrapper.flex.flex-wrap.py-4.justify-center
-       [:h3.min-w-full.text-3xl.pb-2 "Location Size"]
+      [:h2.text-2xl.md:text-4xl.pb-2.pt-2 "Choose Your Encounter Settings"]
+      [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
+       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Location Size"]
        (for [size SIZES]
          ^{:key size} [Button size (= current-size size) #(set-current-size size)])]
-      [:div.Home__buttonWrapper.flex.flex-wrap.py-4.justify-center
-       [:h3.min-w-full.text-3xl.pb-2 "Outcome"]
+      [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
+       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Outcome"]
        (for [outcome OUTCOME_TYPE]
          ^{:key outcome} [Button outcome (= current-outcome outcome) #(set-current-outcome outcome)])]
-      [:div.Home__buttonWrapper.flex.flex-wrap.py-4.justify-center
-       [:h3.min-w-full.text-3xl.pb-2 "Extras"]
+      [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
+       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Extras"]
        (for [outcome OUTCOMES]
          (let [is-in-list? (some #(= outcome %) extra-outcomes)]
            ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
