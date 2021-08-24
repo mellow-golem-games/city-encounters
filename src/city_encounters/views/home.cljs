@@ -23,14 +23,16 @@
   (js/alert "There was an error"))
 
 (defn get-encounter [size outcome extra]
-  (re-frame/dispatch [:set-is-loading true])
-  (let [outcomes-string (subs (reduce #(str %1 "," %2) "" (concat [outcome] extra)) 1)
-        c (api/get-random-encouner size outcomes-string)]
-    (take! c
-      (fn [res]
-        (if (= (:status res) 200)
-          (on-success res)
-          (on-error))))))
+  (if (and size outcome)
+    (let [outcomes-string (subs (reduce #(str %1 "," %2) "" (concat [outcome] extra)) 1)
+          c (api/get-random-encouner size outcomes-string)]
+      (re-frame/dispatch [:set-is-loading true])
+      (take! c
+        (fn [res]
+          (if (= (:status res) 200)
+            (on-success res)
+            (on-error)))))
+    (js/alert "Size and Outcome Required")))
 
 (defn set-current-size [size-string]
   (re-frame/dispatch [:set-current-size size-string]))
