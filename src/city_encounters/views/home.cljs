@@ -11,7 +11,7 @@
             [city-encounters.components.toast :refer [Toast]]))
 
 
-(def SIZES ["Hamlet" "Village" "TOWN" "CITY" "METROPOLIS"])
+(def SIZES ["Hamlet" "Village" "Town" "City" "Metropolis"])
 (def OUTCOME_TYPE ["Good" "Neutral" "Bad"])
 (def OUTCOMES ["Combat" "Roleplay" "Hook"])
 
