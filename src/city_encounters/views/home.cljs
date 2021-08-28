@@ -11,7 +11,7 @@
             [city-encounters.components.toast :refer [Toast]]))
 
 
-(def SIZES ["Hamlet" "Village" "CITY" "TOWN" "METROPOLIS"])
+(def SIZES ["Hamlet" "Village" "TOWN" "CITY" "METROPOLIS"])
 (def OUTCOME_TYPE ["Good" "Neutral" "Bad"])
 (def OUTCOMES ["Combat" "Roleplay" "Hook"])
 
@@ -75,7 +75,7 @@
        (for [outcome OUTCOME_TYPE]
          ^{:key outcome} [Button outcome (= current-outcome outcome) #(set-current-outcome outcome)])]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
-       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Extras"]
+       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Extras (Optional)"]
        (for [outcome OUTCOMES]
          (let [is-in-list? (some #(= outcome %) extra-outcomes)]
            ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
