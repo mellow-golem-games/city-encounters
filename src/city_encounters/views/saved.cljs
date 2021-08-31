@@ -13,7 +13,7 @@
 (defn Saved-page [active]
   (let [saved-outcomes @(re-frame/subscribe [:saved-outcomes])]
      (if saved-outcomes
-       [:div.Saved.sub-page.mx-auto.pt-4 {:class (if (= active "saved") "active" nil)}
+       [:div.Saved.sub-page.mx-auto.pt-4 {:class (str (if (= active "saved") " active " nil) (if (> (count saved-outcomes) 3) " pb-20 " nil)) :style {:overflow "scroll"}}
         (if (= (count saved-outcomes) 0)
           [:h3.text-3xl "No Saved Encounters"]
           (for [outcome saved-outcomes]
