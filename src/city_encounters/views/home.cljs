@@ -61,11 +61,10 @@
         active-page @(re-frame/subscribe [:active-page])
         saved-outcomes @(re-frame/subscribe [:saved-outcomes])]
     [:div.Home.page.text-center.mx-auto.pt-4 {:class (if encounter "Home__encounter" "")}
-     ; (print saved-outcomes)
      [Saved/Saved-page active-page]
      [Settings/Settings-page active-page]
      [:div.Home__options.px-2
-      [:h2.text-2xl.md:text-4xl.pb-2.pt-2 "Choose Your Encounter Settings"]
+      [:h2.text-2xl.md:text-4xl.pb-2.pt-2 "Choose Your Settings"]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
        [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Location Size"]
        (for [size SIZES]
