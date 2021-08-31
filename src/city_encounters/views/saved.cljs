@@ -6,7 +6,8 @@
 (defn get-saved-outcomes [])
 (.then (localstorage/get-current-state)
   (fn [value]
-    (re-frame/dispatch [:set-saved-outcomes (js->clj  value :keywordize-keys true)])))
+    (let [val-to-save (if-not value [] (js->clj value :keywordize-keys true))]
+      (re-frame/dispatch [:set-saved-outcomes val-to-save]))))
 
 
 (defn Saved-page [active]
@@ -16,7 +17,7 @@
         (if (= (count saved-outcomes) 0)
           [:h3.text-3xl "No Saved Encounters"]
           (for [outcome saved-outcomes]
-           [:div.max-w-xl.mx-auto.px-6 {:key (:_id outcome)}
+           [:div.max-w-xl.mx-auto.px-6.py-4 {:key (:_id outcome)}
             [:div.flex.justify-between
               [:h3.text-3xl (:name outcome)]
               [:svg {:style {:width "22px" :height "22px"} :viewBox "0 0 576 512" :on-click #(localstorage/handle-delete (:_id outcome))}
