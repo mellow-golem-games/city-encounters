@@ -1,0 +1,6 @@
+{
+	"appId": "com.cityencounters.mellowgolem",
+	"appName": "City Encounters",
+	"webDir": "resources/public",
+	"bundledWebRuntime": false
+}

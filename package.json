@@ -9,6 +9,7 @@
 		"scss": "node-sass --include-path src/sass/ --watch src/sass/ -o resources/public/styles"
 	},
 	"dependencies": {
+		"@capacitor/android": "^3.2.1",
 		"@capacitor/core": "^3.2.0",
 		"@capacitor/ios": "^3.2.0",
 		"localforage": "^1.9.0",
