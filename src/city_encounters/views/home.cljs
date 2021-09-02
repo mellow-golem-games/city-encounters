@@ -8,7 +8,23 @@
             [city-encounters.components.Nav :refer [Nav]]
             [city-encounters.views.saved :as Saved]
             [city-encounters.views.settings :as Settings]
-            [city-encounters.components.toast :refer [Toast]]))
+            [city-encounters.components.toast :refer [Toast]]
+            ["@capacitor-community/admob" :refer (AdMob)]
+            ["capacitor-ios-app-tracking" :refer (AppTrackingTransparency)]))
+
+(.then (.getTrackingStatus AppTrackingTransparency)
+  (fn [res]
+    (print res)))
+
+(def AdOptions {:adId "ca-app-pub-4304639527456549/5540352395" :isTesting true :npa true})
+
+(defn show-interstitial []
+  (.then (.prepareInterstitial AdMob (clj->js AdOptions))
+    (fn [_]
+      (.showInterstitial AdMob))))
+
+; (show-interstitial)
+
 
 
 (def SIZES ["Hamlet" "Village" "Town" "City" "Metropolis"])

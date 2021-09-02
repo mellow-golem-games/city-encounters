@@ -19,7 +19,6 @@
 
 (defn Results [encounter saved-outcomes]
   (let [is-saved? (is-encounter-saved? encounter saved-outcomes)]
-    (print is-saved?)
     [:div.Results.max-w-xl.mx-auto.px-6
      [:div.Results__header.flex.justify-between
       [:h2.text-3xl (:name encounter)]
