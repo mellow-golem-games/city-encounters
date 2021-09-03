@@ -9,8 +9,10 @@
 		"scss": "node-sass --include-path src/sass/ --watch src/sass/ -o resources/public/styles"
 	},
 	"dependencies": {
+		"@capacitor-community/admob": "^3.2.0",
 		"@capacitor/core": "^3.2.0",
 		"@capacitor/ios": "^3.2.0",
+		"capacitor-plugin-app-tracking-transparency": "^2.0.0",
 		"localforage": "^1.9.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2"

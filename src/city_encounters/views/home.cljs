@@ -8,12 +8,35 @@
             [city-encounters.components.Nav :refer [Nav]]
             [city-encounters.views.saved :as Saved]
             [city-encounters.views.settings :as Settings]
-            [city-encounters.components.toast :refer [Toast]]))
+            [city-encounters.components.toast :refer [Toast]]
+            ["@capacitor-community/admob" :refer (AdMob)]
+            ["capacitor-plugin-app-tracking-transparency" :refer (AppTrackingTransparency)]))
 
+; these functions should probaby live in their own ns, but it breaks for some reason
+; TODO investigate this - probably not too big of a deal since this won't grow much more
+
+(.requestPermission AppTrackingTransparency) ; fire our base tracking
+
+(defn get-tracking-status []
+  (.then (.getStatus AppTrackingTransparency)
+    (fn [status]
+      (if (= (:status (js->clj status :keywordize-keys true)) "authorized")
+        true
+        false))))
+
+(defn show-ad []
+  (.then (get-tracking-status)
+    (fn [status]
+      (let [AdOptions {:adId "PLACEHOLDER" :isTesting false :npa status}]
+        (.then (.prepareInterstitial AdMob (clj->js AdOptions))
+          (fn [_]
+            (.showInterstitial AdMob)))))))
 
 (def SIZES ["Hamlet" "Village" "Town" "City" "Metropolis"])
 (def OUTCOME_TYPE ["Good" "Neutral" "Bad"])
 (def OUTCOMES ["Combat" "Roleplay" "Hook"])
+
+(def amount-loaded (atom 0))
 
 (defn on-success [res]
   (re-frame/dispatch [:set-is-loading false])
@@ -52,6 +75,13 @@
     (re-frame/dispatch [:add-extra-outcome outcome-string])
     (re-frame/dispatch [:remove-extra-outcome outcome-string])))
 
+(defn on-encounter-reset []
+  (re-frame/dispatch [:set-encounter nil])
+  (if (or (= @amount-loaded 0) (= (mod @amount-loaded 5) 0))
+    (show-ad)
+    nil)
+  (swap! amount-loaded inc))
+
 (defn Home-page []
   (let [encounter @(re-frame/subscribe [:encounter])
         current-size @(re-frame/subscribe [:current-size])
@@ -79,7 +109,7 @@
          (let [is-in-list? (some #(= outcome %) extra-outcomes)]
            ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
       [:button.Button__generate.text-xl.text-white.rounded.uppercase.mt-4 {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
-      [:div.Home__options__bottom.text-center.flex.items-center.flex-col.justify-center {:on-click #(re-frame/dispatch [:set-encounter nil])}
+      [:div.Home__options__bottom.text-center.flex.items-center.flex-col.justify-center {:on-click #(on-encounter-reset)}
        [:h3.text-white.text-xl.flex-grow-0  "New Encounter?"]
        [:svg {:aria-hidden "true" :focusable "false" :role "img" :style {:width "15px"} :xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 320 512"}
          [:path {:fill "white" :d "M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"}]]
