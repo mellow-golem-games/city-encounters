@@ -27,7 +27,7 @@
 (defn show-ad []
   (.then (get-tracking-status)
     (fn [status]
-      (let [AdOptions {:adId "PLACEHOLDER" :isTesting false :npa status}]
+      (let [AdOptions {:adId "ca-app-pub-4304639527456549/5540352395" :isTesting false :npa status}]
         (.then (.prepareInterstitial AdMob (clj->js AdOptions))
           (fn [_]
             (.showInterstitial AdMob)))))))
