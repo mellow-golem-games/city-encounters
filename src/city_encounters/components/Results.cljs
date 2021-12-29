@@ -28,8 +28,9 @@
       [:p (:description encounter)]]
      [:div.Results__details.pt-2
       (if (:resolutions encounter)
-        [:h3.text-xl "Examples"
+        [:div
+         [:h3.text-xl.pt-2 "Examples"]
          (for [resolution (:resolutions encounter)]
            [:div
-            [:p resolution]])]
+            [:p.pt-1 resolution]])]
         nil)]]))
