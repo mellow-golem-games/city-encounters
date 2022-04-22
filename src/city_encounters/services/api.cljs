@@ -7,5 +7,6 @@
 
 (defn get-random-encouner [sizes outcomes]
   (go (let [response (<! (http/get (str config/API_URL "city-encounter?size="sizes"&outcomes="outcomes)
-                                   {:with-credentials? false}))]
+                                   {:with-credentials? false
+                                    :accept "application/edn"}))]
         response)))
