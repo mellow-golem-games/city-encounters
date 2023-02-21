@@ -1,20 +1,22 @@
 // @import '_reset';
-@import 'tailwind.css';
-@import '_typography';
+@import "tailwind.css";
+@import "_typography";
 
-@import 'components/_button';
-@import 'components/_loader';
-@import 'components/_nav';
-@import 'components/_results';
+@import "components/_button";
+@import "components/_loader";
+@import "components/_nav";
+@import "components/_results";
 
-@import '_home';
+@import "_home";
 
 #app {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 #fancy-alert {
-  margin: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left) !important;
+  margin: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left) !important;
 }
 
 html {
@@ -26,7 +28,12 @@ body {
   color: white;
   overflow: hidden;
   color: black;
-  background: #f7ebdd;
+  background: rgb(225, 208, 179);
+  background: radial-gradient(
+    circle,
+    rgba(225, 208, 179, 1) 50%,
+    rgb(135 117 86) 100%
+  );
 }
 
 .sub-page {
@@ -35,7 +42,12 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background: #f7ebdd;
+  background: rgb(225, 208, 179);
+  background: radial-gradient(
+    circle,
+    rgba(225, 208, 179, 1) 50%,
+    rgb(135 117 86) 100%
+  );
   z-index: 10;
   transition: all 0.25s;
 

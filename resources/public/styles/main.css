@@ -1,4 +1,4 @@
-@import 'tailwind.css';
+@import "tailwind.css";
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap");
 * {
   font-family: "Merriweather", serif;
@@ -11,29 +11,34 @@ h1, h2, h3, h4, h5 {
 }
 
 .Button {
-  width: 153px;
-  height: 46px;
-  line-height: 46px;
+  border: none;
+  color: #c4985e;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 179px;
+  height: 36px;
+  margin: 4px 8px;
+  background-size: cover;
+  border: 4px solid #271e1e;
+  background-color: #382d2c;
+  border-radius: 8px;
+  text-transform: uppercase;
 }
 
-.Button__generate {
-  width: 153px;
-  height: 46px;
-  line-height: 46px;
-  background-image: url("/images/button.png");
-}
-.Button__generate:active {
-  background-image: url("/images/button_active.png");
-}
-
-@media only screen and (max-width: 350px) {
+@media (max-width: 415px) {
   .Button {
-    width: 101px;
-    height: 31px;
-    line-height: 31px;
-    background-size: contain;
+    font-size: 0.85rem;
   }
 }
+.Button.bigButton {
+  width: 198px;
+  height: 40px;
+}
+
+.Button.active {
+  filter: brightness(60%);
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -78,10 +83,9 @@ h1, h2, h3, h4, h5 {
 .Nav {
   bottom: 0;
   width: 100%;
-  background-image: url("/images/nav_bar.png");
-  background-repeat: no-repeat;
-  background-position: center;
   z-index: 20;
+  background: #191518;
+  background: linear-gradient(90deg, #191518 0%, #2a2725 60%);
 }
 
 .Results {
@@ -92,7 +96,6 @@ h1, h2, h3, h4, h5 {
 .Home {
   position: relative;
   height: 100vh;
-  background-image: url("/images/paper.jpg");
   background-size: cover;
 }
 .Home__options {
@@ -102,7 +105,6 @@ h1, h2, h3, h4, h5 {
   height: 110%;
   width: 100%;
   transition: all 0.5s;
-  background-image: url("/images/paper.jpg");
   z-index: 5;
 }
 .Home__options__bottom {
@@ -126,6 +128,27 @@ h1, h2, h3, h4, h5 {
   top: -100vh;
 }
 
+.Header {
+  background: #191518;
+  background: linear-gradient(90deg, #191518 0%, #2a2725 60%);
+  margin: 0 -0.5rem;
+}
+.Header h2 {
+  background-image: url("/images/sign.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 388px;
+  height: 101px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: #e0b172;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+}
+
 #app {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
@@ -143,7 +166,8 @@ body {
   color: white;
   overflow: hidden;
   color: black;
-  background: #f7ebdd;
+  background: #e1d0b3;
+  background: radial-gradient(circle, #e1d0b3 50%, #877556 100%);
 }
 
 .sub-page {
@@ -152,7 +176,8 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background: #f7ebdd;
+  background: #e1d0b3;
+  background: radial-gradient(circle, #e1d0b3 50%, #877556 100%);
   z-index: 10;
   transition: all 0.25s;
 }

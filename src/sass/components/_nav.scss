@@ -1,9 +1,11 @@
 .Nav {
   bottom: 0;
   width: 100%;
-  // background: $main-color;
-  background-image: url('/images/nav_bar.png');
-  background-repeat: no-repeat;
-  background-position: center;
   z-index: 20;
+  background: rgb(25, 21, 24);
+  background: linear-gradient(
+    90deg,
+    rgba(25, 21, 24, 1) 0%,
+    rgba(42, 39, 37, 1) 60%
+  );
 }
