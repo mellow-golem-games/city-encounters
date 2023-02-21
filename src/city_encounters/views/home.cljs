@@ -109,7 +109,7 @@
        (for [outcome OUTCOMES]
          (let [is-in-list? (some #(= outcome %) extra-outcomes)]
            ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
-      [:button.Button__generate.text-xl.text-white.rounded.uppercase.mt-4 {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
+      [:button.Button.text-xl.text-white.rounded.uppercase.mt-4 {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
       [:div.Home__options__bottom.text-center.flex.items-center.flex-col.justify-center {:on-click #(on-encounter-reset)}
        [:h3.text-white.text-xl.flex-grow-0  "New Encounter?"]
        [:svg {:aria-hidden "true" :focusable "false" :role "img" :style {:width "15px"} :xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 320 512"}
