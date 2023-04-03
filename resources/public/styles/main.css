@@ -5,9 +5,13 @@
   font-weight: 300;
 }
 
-h1, h2, h3, h4, h5 {
-  font-weight: 400;
-  color: #5c3f23;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: bold;
+  color: #4a3824;
 }
 
 .Button {
@@ -23,6 +27,18 @@ h1, h2, h3, h4, h5 {
   background-color: #382d2c;
   border-radius: 8px;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Button p {
+  font-weight: 700;
+}
+
+.Button.generate {
+  margin: 0 auto;
+  width: 198px;
+  height: 40px;
 }
 
 @media (max-width: 415px) {

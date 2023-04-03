@@ -11,6 +11,19 @@
   background-color: #382d2c;
   border-radius: 8px;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-weight: 700;
+  }
+}
+
+.Button.generate {
+  margin: 0 auto;
+  width: 198px;
+  height: 40px;
 }
 
 @media (max-width: 415px) {

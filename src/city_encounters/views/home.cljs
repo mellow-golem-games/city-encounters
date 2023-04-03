@@ -97,19 +97,19 @@
       [:div.Header
        [:h2.text-2xl.md:text-4xl.pb-2.pt-2 "Choose Your Settings"]]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
-       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Location Size"]
+       [:h3.min-w-full.text-2xl.md:text-3xl.pb-2 "Location Size"]
        (for [size SIZES]
          ^{:key size} [Button size (= current-size size) #(set-current-size size)])]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
-       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Outcome"]
+       [:h3.min-w-full.text-2xl.md:text-3xl.pb-2 "Outcome"]
        (for [outcome OUTCOME_TYPE]
          ^{:key outcome} [Button outcome (= current-outcome outcome) #(set-current-outcome outcome)])]
       [:div.Home__buttonWrapper.flex.flex-wrap.py-2.md:py-4.justify-center
-       [:h3.min-w-full.text-xl.md:text-3xl.pb-2 "Extras (Optional)"]
+       [:h3.min-w-full.text-2xl.md:text-3xl.pb-2 "Extras (Optional)"]
        (for [outcome OUTCOMES]
          (let [is-in-list? (some #(= outcome %) extra-outcomes)]
            ^{:key outcome} [Button outcome is-in-list? #(set-extra-outcomes outcome (not is-in-list?))]))]
-      [:button.Button.text-xl.text-white.rounded.uppercase.mt-4 {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
+      [:button.Button.generate.text-xl.text-white.rounded.uppercase.mt-4 {:on-click #(get-encounter current-size current-outcome extra-outcomes)} "Generate"]
       [:div.Home__options__bottom.text-center.flex.items-center.flex-col.justify-center {:on-click #(on-encounter-reset)}
        [:h3.text-white.text-xl.flex-grow-0  "New Encounter?"]
        [:svg {:aria-hidden "true" :focusable "false" :role "img" :style {:width "15px"} :xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 320 512"}
