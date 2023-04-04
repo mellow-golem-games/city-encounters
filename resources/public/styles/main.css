@@ -164,6 +164,17 @@ h5 {
   line-height: 2.1rem;
 }
 
+@media (max-width: 600px) {
+  .Home__contentWrapper {
+    overflow: scroll;
+    height: 65%;
+  }
+}
+@media (max-width: 370px) {
+  .Header h2 {
+    width: 320px;
+  }
+}
 #app {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }

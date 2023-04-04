@@ -66,3 +66,16 @@
     line-height: 2.1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .Home__contentWrapper {
+    overflow: scroll;
+    height: 65%;
+  }
+}
+
+@media (max-width: 370px) {
+  .Header h2 {
+    width: 320px;
+  }
+}
