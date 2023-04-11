@@ -44,6 +44,7 @@ h5 {
 @media (max-width: 415px) {
   .Button {
     font-size: 0.85rem;
+    width: 160px;
   }
 }
 .Button.bigButton {
@@ -55,6 +56,12 @@ h5 {
   filter: brightness(60%);
 }
 
+@media (max-width: 350px) {
+  .Button {
+    font-size: 0.8rem;
+    width: 130px;
+  }
+}
 .lds-ring {
   display: inline-block;
   position: relative;
